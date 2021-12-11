@@ -7,9 +7,8 @@
 
 **DSL (Domain Specific Language)**
 - 도메인에 특화된 언어
-    강의 2 에서는 Javascript 에 특화된 언어로 개발했는데, html 과 유사한 코드로 처리한다면?   
-    즉, html 형태의 코드를 js (강의 2에서 생성한 createElement 로 변환시킨다면 해결 가능)
-    babel 을 이용해서 트랜스코드(변환) 가능
+- 강의 2 에서는 Javascript 에 특화된 언어로 개발했는데, js 파일에서 html 과 유사한 코드로 처리한다면?   
+  즉, html 형태의 코드를 js파일에서 사용하는 것 
 
 ---
 - 바벨 패키지
