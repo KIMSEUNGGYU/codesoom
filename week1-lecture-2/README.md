@@ -13,6 +13,9 @@ npm start
 ---
 
 ### 1단계
+- 필요한 DOM들이 많아질 경우 관리하기 어려움.     
+  => 추상화 구조 필요
+
 ```js
 const element = document.getElementById('app');
 
@@ -27,9 +30,6 @@ paragraph2.appendChild(text2);
 element.appendChild(paragraph1);
 element.appendChild(paragraph2);
 ```
-- 필요한 DOM들이 많아질 경우 관리하기 어려움.     
-  => 추상화 구조 필요
-
 
 ### 2단계
 - 추상화
