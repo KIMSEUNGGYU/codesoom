@@ -4,6 +4,7 @@ import {
   // loadInitialData, // loadInitialData 는 비동기로 뭔가 처리함. => 리듀서로 철할 것은 아님
   setRegions,
   setCategories,
+  setRestaurants,
   selectRegion,
   selectCategory,
 } from './actions';
@@ -37,6 +38,21 @@ describe('reducer', () => {
       const state = reducer(initialState, setCategories(categories));
 
       expect(state.categories).toHaveLength(1);
+    });
+  });
+
+  describe('setRestaurants', () => {
+    it('changes restaurants', () => {
+      const initialState = {
+        restaurants: {},
+      };
+      const restaurants = [
+        { id: 1, name: '마법사주방' },
+      ];
+
+      const state = reducer(initialState, setRestaurants(restaurants));
+
+      expect(state.restaurants).toHaveLength(1);
     });
   });
 

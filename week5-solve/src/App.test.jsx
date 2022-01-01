@@ -17,6 +17,9 @@ test('App', () => {
     categories: [
       { id: 1, name: '한식' },
     ],
+    restaurants: [
+      { id: 1, name: '마법사주방' },
+    ],
   }));
 
   const { queryByText } = render((
@@ -27,4 +30,5 @@ test('App', () => {
 
   expect(queryByText('서울')).toBeInTheDocument();
   expect(queryByText('한식')).toBeInTheDocument();
+  expect(queryByText('마법사주방')).toBeInTheDocument();
 });
