@@ -1,5 +1,8 @@
 import React, { useEffect } from 'react';
+
 import { useDispatch } from 'react-redux';
+
+import { Link } from 'react-router-dom';
 
 import {
   loadInitialData,
@@ -19,10 +22,9 @@ export default function RestaurantsPage() {
   return (
     <div>
       <h2>Restaurants</h2>
-      {/* <RestaurantsPage /> */}
       <RegionsContainer />
       <CategoriesContainer />
-      <RestaurantsContainer />
+      <RestaurantsContainer Link={Link} />
     </div>
   );
 }

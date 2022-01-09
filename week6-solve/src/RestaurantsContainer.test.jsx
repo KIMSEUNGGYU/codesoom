@@ -1,5 +1,7 @@
+/* eslint-disable react/jsx-no-useless-fragment */
 import React from 'react';
 import { useSelector } from 'react-redux';
+// import { MemoryRouter } from 'react-router-dom';
 
 import { render } from '@testing-library/react';
 
@@ -12,8 +14,13 @@ test('RestaurantsContainer', () => {
     ],
   }));
 
+  const Link = ({ children }) => (<>{ children }</>);
+
   const { container } = render((
-    <RestaurantsContainer />
+    // <MemoryRouter>
+    <RestaurantsContainer Link={Link} />
+    // {/* <RestaurantsContainer /> */}
+    // </MemoryRouter>
   ));
 
   expect(container).toHaveTextContent('마법사주방');
