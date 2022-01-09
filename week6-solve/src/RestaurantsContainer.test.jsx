@@ -1,9 +1,8 @@
 /* eslint-disable react/jsx-no-useless-fragment */
 import React from 'react';
 import { useSelector } from 'react-redux';
-// import { MemoryRouter } from 'react-router-dom';
 
-import { render } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 
 import RestaurantsContainer from './RestaurantsContainer';
 
@@ -14,14 +13,15 @@ test('RestaurantsContainer', () => {
     ],
   }));
 
-  const Link = ({ children }) => (<>{ children }</>);
+  const handleClick = jest.fn();
 
-  const { container } = render((
-    // <MemoryRouter>
-    <RestaurantsContainer Link={Link} />
-    // {/* <RestaurantsContainer /> */}
-    // </MemoryRouter>
+  const { container, getByText } = render((
+    <RestaurantsContainer onClickRestaurant={handleClick} />
   ));
 
   expect(container).toHaveTextContent('마법사주방');
+
+  fireEvent.click(getByText('마법사주방'));
+
+  expect(handleClick).toBeCalledWith({ id: 1, name: '마법사주방' });
 });

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 
 import { useDispatch } from 'react-redux';
 
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 import {
   loadInitialData,
@@ -13,18 +13,24 @@ import CategoriesContainer from './CategoriesContainer';
 import RestaurantsContainer from './RestaurantsContainer';
 
 export default function RestaurantsPage() {
+  const history = useHistory();
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(loadInitialData());
   }, []);
 
+  function handleClickRestaurant(restaurant) {
+    const url = `/restaurants/${restaurant.id}`;
+    history.push(url);
+  }
+
   return (
     <div>
       <h2>Restaurants</h2>
       <RegionsContainer />
       <CategoriesContainer />
-      <RestaurantsContainer Link={Link} />
+      <RestaurantsContainer onClickRestaurant={handleClickRestaurant} />
     </div>
   );
 }
