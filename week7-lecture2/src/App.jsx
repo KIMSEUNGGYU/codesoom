@@ -6,12 +6,18 @@ import {
   Link,
 } from 'react-router-dom';
 
+import { useDispatch } from 'react-redux';
+
 import RestaurantsPage from './RestaurantsPage';
 import RestaurantPage from './RestaurantPage';
 import HomePage from './HomePage';
 import AboutPage from './AboutPage';
 import LoginPage from './LoginPage';
 import NotFoundPage from './NotFoundPage';
+
+import { setAccessToken } from './actions';
+
+import { loadItem } from './services/storage';
 
 export default function App() {
   // const { location: { pathname } } = window;
@@ -21,6 +27,14 @@ export default function App() {
   //   '/about': AboutPage,
   //   '/restaurants': RestaurantsPage,
   // }[pathname] || NotFoundPage;
+
+  const dispatch = useDispatch();
+
+  // TODO: localStorage 에서 accessToken 가져오기
+  const accessToken = loadItem('accessToken');
+  if (accessToken) {
+    dispatch(setAccessToken(accessToken));
+  }
 
   return (
     <div>

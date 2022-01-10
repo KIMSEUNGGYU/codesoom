@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-useless-fragment */
 import React from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
@@ -7,9 +8,21 @@ import LoginForm from './LoginForm';
 import {
   changeLoginField,
   requestLogin,
+  logout,
 } from './actions';
 
 import { get } from './utils';
+
+function LogoutForm({ onClick }) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+    >
+      Log out
+    </button>
+  );
+}
 
 export default function LoginFormContainer() {
   const dispatch = useDispatch();
@@ -25,14 +38,24 @@ export default function LoginFormContainer() {
     dispatch(requestLogin());
   }
 
+  function handleClickLogout() {
+    dispatch(logout());
+  }
+
   return (
     <>
-      <LoginForm
-        fields={{ email, password }}
-        onChange={handleChange}
-        onSubmit={handleSubmit}
-      />
-      <p>{accessToken}</p>
+      {accessToken ? (
+        <LogoutForm onClick={handleClickLogout} />
+      ) : (
+        <>
+          <LoginForm
+            fields={{ email, password }}
+            onChange={handleChange}
+            onSubmit={handleSubmit}
+          />
+          <p>{accessToken}</p>
+        </>
+      )}
     </>
   );
 }
