@@ -19,6 +19,11 @@ describe('RestaurantContainer', () => {
         id: 1,
         name: '마법사주방',
         address: '서울시 강남구',
+        reviews: [
+          {
+            id: 1, name: '테스터', description: '맛있어요', score: 1,
+          },
+        ],
       },
       reviewFields: {
         score: '',
@@ -38,6 +43,15 @@ describe('RestaurantContainer', () => {
 
     // 내가 추가한거
     expect(dispatch).toBeCalled();
+  });
+
+  it('renders reviews', () => {
+    const { container } = render((
+      <RestaurantContainer restaurantId="1" />
+    ));
+
+    expect(container).toHaveTextContent('테스터');
+    expect(container).toHaveTextContent('맛있어요');
   });
 
   context('without logged-in', () => {

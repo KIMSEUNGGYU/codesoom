@@ -12,6 +12,8 @@ import {
   setAccessToken,
   logout,
   changeReviewField,
+  clearReviewFields,
+  setReviews,
 } from './actions';
 
 describe('reducer', () => {
@@ -172,19 +174,58 @@ describe('reducer', () => {
   });
 
   describe('changeReviewField', () => {
-    const initialState = {
-      reviewFields: {
-        score: '',
-        description: '',
-      },
-    };
+    it('changes a field of review', () => {
+      const initialState = {
+        reviewFields: {
+          score: '',
+          description: '',
+        },
+      };
 
-    const state = reducer(
-      initialState,
-      changeReviewField({ name: 'score', value: '5' }),
-    );
+      const state = reducer(
+        initialState,
+        changeReviewField({ name: 'score', value: '5' }),
+      );
 
-    expect(state.reviewFields.score).toBe('5');
-    expect(state.reviewFields.description).toBe('');
+      expect(state.reviewFields.score).toBe('5');
+      expect(state.reviewFields.description).toBe('');
+    });
+  });
+
+  describe('clearReviewFields', () => {
+    it('clears field of review', () => {
+      const initialState = {
+        reviewFields: {
+          score: '5',
+          description: '맛있어요',
+        },
+      };
+
+      const state = reducer(initialState, clearReviewFields());
+
+      expect(state.reviewFields.score).toBe('');
+      expect(state.reviewFields.description).toBe('');
+    });
+  });
+
+  describe('setReviews', () => {
+    it('changes reviews of the current restaurant', () => {
+      const reviews = [
+        {
+          id: 1, name: '테스터', description: '맛있어요', score: 1,
+        },
+      ];
+
+      const initialState = {
+        restaurant: {
+          reviews: [],
+        },
+      };
+
+      const state = reducer(initialState, setReviews(reviews));
+
+      expect(state.restaurant.reviews).toHaveLength(1);
+      expect(state.restaurant.reviews[0]).toEqual(reviews[0]);
+    });
   });
 });
