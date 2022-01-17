@@ -6,7 +6,7 @@ import { useHistory } from 'react-router-dom';
 
 import {
   loadInitialData,
-} from './actions';
+} from './slice';
 
 import RegionsContainer from './RegionsContainer';
 import CategoriesContainer from './CategoriesContainer';

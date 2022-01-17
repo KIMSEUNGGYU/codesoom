@@ -1,7 +1,4 @@
-import reducer from './reducer';
-
-import {
-  // loadInitialData, // loadInitialData 는 비동기로 뭔가 처리함. => 리듀서로 철할 것은 아님
+import reducer, {
   setRegions,
   setCategories,
   setRestaurants,
@@ -14,10 +11,9 @@ import {
   changeReviewField,
   clearReviewFields,
   setReviews,
-} from './actions';
+} from './slice';
 
 describe('reducer', () => {
-  // describe('loadInitialData', () => { }); // loadInitialData 는 비동기로 뭔가 처리함. => 리듀서로 철할 것은 아님
   describe('setRegions', () => {
     it('changes regions', () => {
       const initialState = {

@@ -17,7 +17,7 @@ import AboutPage from './AboutPage';
 import LoginPage from './LoginPage';
 import NotFoundPage from './NotFoundPage';
 
-import { setAccessToken } from './actions';
+import { setAccessToken } from './slice';
 
 import { loadItem } from './services/storage';
 

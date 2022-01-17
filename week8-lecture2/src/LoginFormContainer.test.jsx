@@ -47,7 +47,7 @@ describe('LoginFormContainer', () => {
       });
 
       expect(dispatch).toBeCalledWith({
-        type: 'changeLoginField',
+        type: 'application/changeLoginField',
         payload: { name: 'email', value: 'new email' },
       });
     });
@@ -78,7 +78,7 @@ describe('LoginFormContainer', () => {
       //   type: 'setAccessToken',
       //   payload: { accessToken: '' },
       // });
-      expect(dispatch).toBeCalledWith({ type: 'logout' });
+      expect(dispatch).toBeCalledWith({ type: 'application/logout' });
       // expect(container).toHaveTextContent('Log out');
     });
   });
